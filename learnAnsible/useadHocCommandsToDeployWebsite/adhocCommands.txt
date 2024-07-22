@@ -1,0 +1,14 @@
+ansible [pattern] -m [module] -a "[module options]"
+
+To reboot my servers : ansible tc_app -a "/sbin/reboot"
+ -a is argument 
+
+To copy a file from my ansible server to web servers 
+	:  ansible webServers -m ansible.builtin.copy -a "src=./index.html dest=/var/www/html" -i inventory --become
+	ansible.builtin.copy is a module for running builtin command in this case for copy
+
+To install httpd or any other services :
+
+	ansible webServers -m ansible.builtin.yum -a "name=httpd state=started enabled=yes" -i inventory --become
+
+become is giving sudo permission
