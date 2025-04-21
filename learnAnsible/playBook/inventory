@@ -1,23 +1,17 @@
 all:
   hosts:
     web01:
-      ansible_host: 172.31.85.118
+      ansible_host: 18.209.57.217
     web02:
-      ansible_host: 172.31.82.59
-    web03: 
-      ansible_host: 172.31.81.132
+      ansible_host: 52.23.230.83
     db:
-      ansible_host: 172.31.94.33
-      ansible_user: ubuntu
+      ansible_host: 44.220.147.182
  
   children:
     webServers:
       hosts:
         web01:
         web02:
-        web03:
-      vars:
-        ansible_user: ec2-user
     dbServers:
       hosts:
         db:
@@ -26,4 +20,5 @@ all:
         webServers:
         dbServers:
       vars:
+        ansible_user: ubuntu
         ansible_ssh_private_key_file: target-machines.pem

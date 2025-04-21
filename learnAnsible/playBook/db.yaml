@@ -1,0 +1,13 @@
+---
+- name: MySql Databases
+  hosts: dbServers
+  tasks:
+    - name: Set Up Required Packages
+      apt:
+        name: python3-pymysql
+        update_cache: yes  
+    - name: Create DataBases
+      community.mysql.mysql_db:
+        name: db01,db02
+        state: present
+        login_unix_socket: /run/mysqld/mysqld.sock
